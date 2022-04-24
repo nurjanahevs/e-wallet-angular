@@ -1,0 +1,50 @@
+<a href="/home">Back</a>
+
+<div class="form_wrapper">
+  <div class="form_container">
+    <div class="title_container">
+      <h2>Registration Form</h2>
+    </div>
+    <div class="row clearfix">
+      <div class="">
+        <form [formGroup]="registerForm">
+          <div class="input_field">
+            <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+            <input type="email" formControlName="email" placeholder="Email" required />
+          </div>
+          <div class="input_field">
+            <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+            <input
+              type="password"
+              formControlName="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div class="row clearfix">
+            <div class="col_half">
+              <div class="input_field">
+                <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                <input type="text" formControlName="name" placeholder="Full Name" />
+              </div>
+            </div>
+            <div class="col_half">
+              <div class="input_field">
+                <span><i aria-hidden="true" class="fa-solid fa-id-badge"></i></span>
+                <input
+                  type="text"
+                  formControlName="identityNumb"
+                  placeholder="ID"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <input (click)="onSubmit()" class="button" type="submit" value="Register" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
