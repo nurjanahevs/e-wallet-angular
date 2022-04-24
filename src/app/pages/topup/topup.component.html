@@ -7,8 +7,8 @@
 
     <div class="transaction">
       <label for=""></label>
-      <input type="text" placeholder="IDR">
-      <input type="submit">
+      <input type="text" placeholder="IDR" [formControl]="topUp">
+      <input type="submit" [disabled]="!topUp.valid" (click)="onSubmit(topUp)">
     </div>
 
     <div class="image mt-5">
