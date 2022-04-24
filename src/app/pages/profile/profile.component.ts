@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
-// import { DatePipe } from '@angular/common';
-import Swal from 'sweetalert2'; 
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +10,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-
   customerIdStorages: any;
   dataCustomer: any;
   customerUse: any;
@@ -20,39 +18,39 @@ export class ProfileComponent implements OnInit {
   customers: any;
   detailnya: any;
   identityNumb: any;
-  
+
   alret = false;
   user: any;
 
   myDate = new Date();
 
-  constructor(private userService: UserService, private http: HttpClient, private router: Router, private route: ActivatedRoute) {
+  constructor(
+    private userService: UserService,
+    private http: HttpClient,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
     this.myDate = new Date();
   }
 
-
   ngOnInit(): void {
-    this.getCustomers({});
+    // this.getCustomers({});
     this.customerIdStorages = localStorage.getItem('userId');
     this.customerName = localStorage.getItem('userName');
     this.balance = localStorage.getItem('balance');
     this.identityNumb = localStorage.getItem('identityNumb');
-    console.log(this.balance,'ini balance');
+    console.log(this.balance, 'ini balance');
   }
-
-
 
   getCustomers(data: any) {
     this.userService.getAllCustomers(data).subscribe((res) => {
       console.log(res, 'ini console all customers');
       this.customers = res;
-      console.log(this.customers.data.name,'ini console nama')
-      
-    })
+    });
   }
 
   logout() {
-    let timerInterval : any;
+    let timerInterval: any;
     Swal.fire({
       title: 'Log Out Process!',
       html: 'your account automatically logged out',
@@ -69,10 +67,10 @@ export class ProfileComponent implements OnInit {
       },
     }).then((result) => {
       if (result.dismiss === Swal.DismissReason.timer) {
-      Swal.fire({
-        title: 'Log Out Success!',
-        html: 'your account automatically',
-      });
+        Swal.fire({
+          title: 'Log Out Success!',
+          html: 'your account is now logged out',
+        });
       }
     });
     setTimeout(() => {
@@ -85,7 +83,4 @@ export class ProfileComponent implements OnInit {
       this.router.navigate([``]);
     }, 4000);
   }
-
-  
 }
-

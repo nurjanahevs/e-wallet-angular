@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class TopupComponent implements OnInit {
 
-  topUp = new FormControl('');
+  topUpAdds = new FormControl();
 
   customerId: any;
 
@@ -24,7 +24,7 @@ export class TopupComponent implements OnInit {
     return this.http.put<any>(
       `http://localhost:8001/api/topup/${this.customerId}`, user
     ).subscribe((data: any) => {
-      console.warn(this.topUp.value);
+      console.log(this.topUpAdds.value,'ini jumlah topUp');
       console.log(data);
       this.router.navigate(['/profile']);
     })
