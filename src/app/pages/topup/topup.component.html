@@ -7,14 +7,14 @@
 
     <div class="transaction">
       <label for=""></label>
-      <input type="number" placeholder="IDR" [formControl]="topUpAdds">
-      <input type="submit" [disabled]="!topUpAdds.valid" (click)="onSubmit(topUpAdds)">
+      <input type="number" placeholder="IDR" [(ngModel)]="topUp">
+      <input type="submit" (click)="onSubmit(topUp)">
     </div>
 
     <div class="image mt-5">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9_qVIoWA7qNWrTYQcEoGmza3SFyakLvnl5w&usqp=CAU" alt="">
     </div>
     
-
   </div>
 </div>
+

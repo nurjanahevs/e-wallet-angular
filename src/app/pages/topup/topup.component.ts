@@ -6,28 +6,33 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-topup',
   templateUrl: './topup.component.html',
-  styleUrls: ['./topup.component.scss']
+  styleUrls: ['./topup.component.scss'],
 })
 export class TopupComponent implements OnInit {
+  topUpAdds = new FormControl('');
+  balance: any;
 
-  topUpAdds = new FormControl();
+  topUp: any;
+  balanceData: any;
 
   customerId: any;
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) {}
+  
 
   ngOnInit(): void {
     this.customerId = localStorage.getItem('userId');
+    this.balance = localStorage.getItem('balance');
   }
 
   onSubmit(user: any) {
-    return this.http.put<any>(
-      `http://localhost:8001/api/topup/${this.customerId}`, user
-    ).subscribe((data: any) => {
-      console.log(this.topUpAdds.value,'ini jumlah topUp');
-      console.log(data);
-      this.router.navigate(['/profile']);
-    })
+    return this.http
+      .put<any>(`http://localhost:8001/api/topup/${this.customerId}`, user)
+      .subscribe((data: any) => {
+        this.balanceData = parseInt(this.topUp) + parseInt(this.balance);
+        console.log(this.topUpAdds.value, 'ini jumlah topUp');
+        console.log(data);
+        this.router.navigate(['/profile']);
+      });
   }
-
 }

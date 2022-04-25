@@ -1,6 +1,7 @@
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +31,7 @@ import { TransferComponent } from './pages/transfer/transfer.component';
     ReactiveFormsModule,
     HttpClientModule,
     SweetAlert2Module,
+    FormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent],
